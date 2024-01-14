@@ -3,6 +3,8 @@ package presenter;
 import model.Service;
 import view.View;
 
+import java.text.ParseException;
+
 public class Presenter {
     Service service;
     View view;
@@ -17,6 +19,7 @@ public class Presenter {
         view.start();
     }
 
-    public void writeData(String s) {
+    public String[] addElement(String s) {
+        return service.addElement(s);
     }
 }

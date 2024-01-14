@@ -1,6 +1,5 @@
 package main;
 
-import model.Service;
 import presenter.Presenter;
 import view.consoleView.ConsoleUI;
 

@@ -1,5 +1,6 @@
 package view.consoleView;
 
+import view.commands.AddElement;
 import view.commands.Command;
 import view.commands.Exit;
 
@@ -11,6 +12,7 @@ public class MainMenu {
 
     public MainMenu(ConsoleUI consoleUI) {
         commandList = new ArrayList<>();
+        commandList.add(new AddElement(consoleUI));
         commandList.add(new Exit(consoleUI));
     }
 
