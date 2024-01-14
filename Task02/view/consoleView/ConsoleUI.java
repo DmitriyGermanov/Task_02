@@ -71,7 +71,6 @@ public class ConsoleUI implements View {
                 System.out.println("Введено некорректное количество элементов\n");
             } catch (IllegalData e) {
                 System.out.println("Дата рождения введена некорректно, введите дату рождения по шаблону\n");
-                ;
             } catch (IllegalPhoneNumber e) {
                 System.out.println("Номер телефона введен неверно, введите только цифры\n");
             } catch (IllegalGender e) {
