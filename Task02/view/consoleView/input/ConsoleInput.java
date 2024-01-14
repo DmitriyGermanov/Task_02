@@ -14,17 +14,9 @@ public class ConsoleInput implements Input {
         return Integer.parseInt(scanner.nextLine());
     }
 
-    public Integer rangeIntInput(Integer start, Integer end) {
-        int output;
-        try {
-            output = Integer.parseInt(scanner.nextLine());
-            if (output >= start && output <= end) {
-                return output;
-            } else {
-                throw new IllegalArgumentException("Введите корректный пункт меню от " + start + " до " + end);
-            }
-        } catch (Exception e) {
-            throw e;
-        }
+    public String dataInput() {
+        return scanner.nextLine();
     }
+
+
 }

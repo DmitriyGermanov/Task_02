@@ -1,5 +1,6 @@
 package view.consoleView;
 
+import presenter.Presenter;
 import view.View;
 import view.consoleView.input.ConsoleInput;
 import view.consoleView.input.Input;
@@ -8,11 +9,16 @@ public class ConsoleUI implements View {
     private boolean work;
     private final MainMenu menu;
     private final Input input;
+    private Presenter presenter;
 
     public ConsoleUI() {
         this.work = true;
         menu = new MainMenu(this);
         input = new ConsoleInput();
+    }
+
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
     }
 
     @Override
@@ -40,5 +46,9 @@ public class ConsoleUI implements View {
 
     public void setWork(boolean b) {
         this.work = false;
+    }
+
+    public void writeData() {
+        presenter.writeData(input.dataInput());
     }
 }
