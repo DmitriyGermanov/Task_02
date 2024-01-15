@@ -1,19 +1,14 @@
 package model;
 
-import model.writer.FileHandler;
-
-import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Data {
     List<String[]> data;
-    FileHandler fileHandler;
+
 
     public Data() {
         this.data = new ArrayList<>();
-        fileHandler = new FileHandler();
     }
 
     public List<String[]> getData() {
@@ -25,16 +20,26 @@ public class Data {
         return element;
     }
 
-    public boolean writeToFile() throws IOException {
-        if (data == null) {
-            return false;
-        } else {
-            for (String[] element : data) {
-                for (String s : element) {
-                    fileHandler.write(Path.of("files/" + element[0]), String.join(";", s));
-                }
+    public String getParsedData() {
+        StringBuilder sb = new StringBuilder();
+        for (String[] element : data) {
+            for (String s : element) {
+                sb.append(s).append(";");
             }
-            return true;
         }
+        return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        if (data.isEmpty()) {
+            throw new NullPointerException("Данные отсутствуют");
+        }
+        StringBuilder sb = new StringBuilder();
+        for (String[] element : data) {
+            sb.append("* ");
+            sb.append(String.join(" ", element)).append("\n");
+        }
+        return sb.toString();
     }
 }

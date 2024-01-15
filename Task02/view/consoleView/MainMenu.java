@@ -1,8 +1,6 @@
 package view.consoleView;
 
-import view.commands.AddElement;
-import view.commands.Command;
-import view.commands.Exit;
+import view.commands.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +11,8 @@ public class MainMenu {
     public MainMenu(ConsoleUI consoleUI) {
         commandList = new ArrayList<>();
         commandList.add(new AddElement(consoleUI));
+        commandList.add(new ShowAllData(consoleUI));
+        commandList.add(new WriteToFile(consoleUI));
         commandList.add(new Exit(consoleUI));
     }
 

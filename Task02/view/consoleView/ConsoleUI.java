@@ -9,8 +9,7 @@ import view.View;
 import view.consoleView.input.ConsoleInput;
 import view.consoleView.input.Input;
 
-import javax.swing.*;
-import java.text.ParseException;
+import java.io.IOException;
 
 public class ConsoleUI implements View {
     private boolean work;
@@ -51,8 +50,8 @@ public class ConsoleUI implements View {
         }
     }
 
-    public void setWork(boolean b) {
-        this.work = false;
+    public void setWork(boolean work) {
+        this.work = work;
     }
 
     public void addElement() {
@@ -74,7 +73,7 @@ public class ConsoleUI implements View {
             } catch (IllegalPhoneNumber e) {
                 System.out.println("Номер телефона введен неверно, введите только цифры\n");
             } catch (IllegalGender e) {
-                System.out.println("Пол введен неверно, введите: Мужской или Жениский\n");
+                System.out.println("Пол введен неверно, введите: Мужской или Женский\n");
             }
         }
         System.out.println("Вы ввели следующие данные:\n" +
@@ -84,5 +83,24 @@ public class ConsoleUI implements View {
                 "Дата рождения: " + parts[3] + "\n" +
                 "Номер телефона: " + parts[4] + "\n" +
                 "Пол: " + parts[5]);
+    }
+
+    public void writeToFile() {
+        try {
+            presenter.writeToFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            System.out.println("Отсутствуют данные для записи");
+        }
+    }
+
+    public void showAllData() {
+        try {
+            System.out.println(presenter.showAllData());
+        } catch (NullPointerException e) {
+            System.out.println("Данные отсутствуют");
+        }
     }
 }
